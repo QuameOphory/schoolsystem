@@ -61,7 +61,7 @@ ROOT_URLCONF = 'schoolsystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'schoolsystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postresql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ['NAME'],
         'USER': os.environ['USERT'],
         'PASSWORD': os.environ['PASSWORD'],
