@@ -87,9 +87,8 @@ class Student(models.Model):
     photo = models.ImageField(_("Passport Picture"), upload_to='photos/%Y/%m/%d', blank=True, null=True)
 
     def __str__(self):
-        # oname = self.other_name if self.other_name else ''
-        # return f'{self.first_name} {oname} {self.last_name} [{self.student_id}]'
         return f'{self.first_name} {self.last_name} [{self.student_id}]'
+    
     @admin.display(
         description='Age',
     )
