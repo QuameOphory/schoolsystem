@@ -21,5 +21,5 @@ from schoolsystem.settings import MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('students/', include('students.urls')),
+    path('students/', include('students.urls')), # students app url
 ] + static(settings.MEDIA_URL, document_root=MEDIA_ROOT)
