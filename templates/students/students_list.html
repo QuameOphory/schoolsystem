@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Students - List</title>
+{% endblock title %}
+
+{% block content %}
+  <h1>List of Students</h1>
+  <hr>
+  <table class="table table-stripped" id="student-list">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Othername</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if students %}
+          {% for student in students %}
+            <tr>
+                <td><a href="{% url 'detail' student.id %}">{{ student.student_id }}</a></td>
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.last_name }}</td>
+                {% if student.other_name %}
+                    <td>{{ student.other_name }}</td>
+                {% else %}
+                    <td>-</td>
+                {% endif %}
+                
+                <td>{{ student.birth_date }}</td>
+                <td>{{ student.gender }}</td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <td colspan="100">No student record found</td>
+        {% endif %}
+        
+    </tbody>
+  </table>
+{% endblock content %}

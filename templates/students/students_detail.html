@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Students - Profile</title>
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ student }}</h1>
+    <hr>
+    <div>
+        <img src="{{ student.photo.url }}" alt="student passport" height="150px" width="150">
+    </div>
+{% endblock content %}
