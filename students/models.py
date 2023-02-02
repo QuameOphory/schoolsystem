@@ -108,7 +108,7 @@ class AlertType(models.Model):
     description = models.TextField(_("Description"), blank=True, null=True)
 
     def __str__(self):
-        self.alerttype_name
+        return self.alerttype_name
 
     class Meta:
         db_table = 'studentalerttype'
@@ -121,14 +121,14 @@ class Alert(models.Model):
     alert_type = models.ForeignKey(AlertType, verbose_name=_("Type of Alert"), on_delete=models.CASCADE)
     description = models.TextField(_("Description"))
     created_at = models.DateField(_("Date Added"), auto_now_add=True)
-    alert_status = models.ForeignKey(Status, verbose_name=_(""), on_delete=models.SET_NULL, null=True)
+    alert_status = models.ForeignKey(Status, verbose_name=_("Status"), on_delete=models.SET_NULL, null=True)
     alert_attachment1 = models.FileField(_("Alert Attachment 1"), upload_to='files/%Y/%m/%d', max_length=100, blank=True, null=True)
     alert_attachment2 = models.FileField(_("Alert Attachment 2"), upload_to='files/%Y/%m/%d', max_length=100, blank=True, null=True)
     alert_attachment3 = models.FileField(_("Alert Attachment 3"), upload_to='files/%Y/%m/%d', max_length=100, blank=True, null=True)
     comment = models.TextField(_("Comment"), blank=True, null=True)
     
     def __str__(self):
-        return f'{self.alert_description}'
+        return f'{self.description}'
 
     class Meta:
         db_table = 'studentalert'
@@ -160,7 +160,7 @@ class Guardian(models.Model):
     email_address = models.EmailField(_("Email"), max_length=254)
 
     def __str__(self):
-        self.name
+        return self.name
 
     class Meta:
         db_table = 'studentguardian'
