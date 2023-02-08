@@ -46,7 +46,7 @@
                             <td>{{student.student_id}}</td>
                             <td>
                               <h2 class="table-avatar">
-                                  <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-01.jpg" alt="User Image"></a>
+                                  <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{ student.photo.url }}" alt="User Image"></a>
                                   <a href="student-details.html">{{student}}</a>
                               </h2>
                             </td>
@@ -54,7 +54,7 @@
                             <td>{{student.birth_date}}</td>
                             <td>Jeffrey Wong</td>
                             <td>097 3584 5870</td>
-                            <td>911 Deer Ridge Drive,USA</td>
+                            <td>{{student.residence_address}}</td>
                             <td class="text-right">
                               <div class="actions">
                                   <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
