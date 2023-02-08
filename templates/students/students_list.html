@@ -5,40 +5,76 @@
 {% endblock title %}
 
 {% block content %}
-  <h1>List of Students</h1>
-  <hr>
-  <table class="table table-stripped" id="student-list">
-    <thead>
-        <tr>
-            <th>Student ID</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Othername</th>
-            <th>Date of Birth</th>
-            <th>Gender</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if students %}
-          {% for student in students %}
-            <tr>
-                <td><a href="{% url 'detail' student.id %}">{{ student.student_id }}</a></td>
-                <td>{{ student.first_name }}</td>
-                <td>{{ student.last_name }}</td>
-                {% if student.other_name %}
-                    <td>{{ student.other_name }}</td>
-                {% else %}
-                    <td>-</td>
-                {% endif %}
-                
-                <td>{{ student.birth_date }}</td>
-                <td>{{ student.gender }}</td>
-            </tr>
-          {% endfor %}
-        {% else %}
-          <td colspan="100">No student record found</td>
-        {% endif %}
-        
-    </tbody>
-  </table>
+<div class="page-wrapper">
+  <div class="content container-fluid">
+     <div class="page-header">
+        <div class="row align-items-center">
+           <div class="col">
+              <h3 class="page-title">Students</h3>
+              <ul class="breadcrumb">
+                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                 <li class="breadcrumb-item active">Students</li>
+              </ul>
+           </div>
+           <div class="col-auto text-right float-right ml-auto">
+              <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+              <a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+           </div>
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-sm-12">
+           <div class="card card-table">
+              <div class="card-body">
+                 <div class="table-responsive">
+                    <table class="table table-hover table-center mb-0 datatable">
+                       <thead>
+                          <tr>
+                             <th>ID</th>
+                             <th>Name</th>
+                             <th>Class</th>
+                             <th>DOB</th>
+                             <th>Parent Name</th>
+                             <th>Mobile Number</th>
+                             <th>Address</th>
+                             <th class="text-right">Action</th>
+                          </tr>
+                       </thead>
+                       <tbody>
+                        {% for student in students %}
+                          <tr>
+                            <td>{{student.student_id}}</td>
+                            <td>
+                              <h2 class="table-avatar">
+                                  <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-01.jpg" alt="User Image"></a>
+                                  <a href="student-details.html">{{student}}</a>
+                              </h2>
+                            </td>
+                            <td>10 A</td>
+                            <td>{{student.birth_date}}</td>
+                            <td>Jeffrey Wong</td>
+                            <td>097 3584 5870</td>
+                            <td>911 Deer Ridge Drive,USA</td>
+                            <td class="text-right">
+                              <div class="actions">
+                                  <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                  <i class="fas fa-pen"></i>
+                                  </a>
+                                  <a href="#" class="btn btn-sm bg-danger-light">
+                                  <i class="fas fa-trash"></i>
+                                  </a>
+                              </div>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                       </tbody>
+                    </table>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+  {% include 'partials/_footer.html' %}
+</div>
 {% endblock content %}

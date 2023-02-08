@@ -122,9 +122,9 @@ class Alert(models.Model):
     description = models.TextField(_("Description"))
     created_at = models.DateField(_("Date Added"), auto_now_add=True)
     alert_status = models.ForeignKey(Status, verbose_name=_("Status"), on_delete=models.SET_NULL, null=True)
-    alert_attachment1 = models.FileField(_("Alert Attachment 1"), upload_to='files/%Y/%m/%d', max_length=100, blank=True, null=True)
-    alert_attachment2 = models.FileField(_("Alert Attachment 2"), upload_to='files/%Y/%m/%d', max_length=100, blank=True, null=True)
-    alert_attachment3 = models.FileField(_("Alert Attachment 3"), upload_to='files/%Y/%m/%d', max_length=100, blank=True, null=True)
+    alert_attachment1 = models.FileField(_("Alert Attachment 1"), upload_to='files/%Y/%m/%d', blank=True, null=True)
+    alert_attachment2 = models.FileField(_("Alert Attachment 2"), upload_to='files/%Y/%m/%d', blank=True, null=True)
+    alert_attachment3 = models.FileField(_("Alert Attachment 3"), upload_to='files/%Y/%m/%d', blank=True, null=True)
     comment = models.TextField(_("Comment"), blank=True, null=True)
     
     def __str__(self):
