@@ -76,6 +76,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.CustomUser'
+
 WSGI_APPLICATION = 'schoolsystem.wsgi.application'
 
 
