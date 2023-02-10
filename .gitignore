@@ -3,3 +3,5 @@ schoolsystemvenv/
 schoolsystem/__pycache__/
 students/__pycache__/
 students/migrations/
+users/migrations/*
+users/__pycache__
