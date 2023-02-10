@@ -1,15 +1,17 @@
 from django.db import models
 from .managers import CustomUserManager
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
 # Create your models here.
 
-class CustomUser(models.Model):
-
+class CustomUser(AbstractUser):
+    user_code = models.CharField(_("Staff ID"), max_length=50)
     username = None
     email = models.EmailField(_("Email Address"), max_length=254, unique=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELD = []
+    REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
 
@@ -20,3 +22,4 @@ class CustomUser(models.Model):
     def __str__(self):
         return self.email
 
+    
