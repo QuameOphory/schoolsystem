@@ -108,7 +108,7 @@ class Branch(models.Model):
     slogan = models.CharField("Slogan", max_length=50, blank=True, null=True)
     mantra = models.CharField("Mantra", max_length=50, blank=True, null=True)
     nickname = models.CharField("Nickname", max_length=50, blank=True, null=True)
-    region = models.ForeignKey(Region, verbose_name="", on_delete=models.SET_NULL, null=True)
+    region = models.ForeignKey(Region, verbose_name="Region", on_delete=models.SET_NULL, null=True)
     description = models.TextField("Description", blank=True, null=True)
     created_at = models.DateTimeField("Created At", auto_now_add=True)
     status = models.ForeignKey(ValidityStatus, verbose_name="Status", on_delete=models.SET_NULL, null=True)

@@ -10,7 +10,7 @@ class CustomUser(AbstractUser):
     user_code = models.CharField(_("Staff ID"), max_length=50)
     username = None
     email = models.EmailField(_("Email Address"), max_length=254, unique=True)
-    customer_branch = models.ForeignKey(Branch, verbose_name=_("Branch"), on_delete=models.CASCADE)
+    customer_branch = models.ForeignKey(Branch, verbose_name=_("Branch"), on_delete=models.CASCADE, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

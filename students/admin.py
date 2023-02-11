@@ -1,68 +1,97 @@
 from django.contrib import admin
 from .models import (
-    Status, 
-    Gender,
-    Religion,
-    BloodGroup,
-    Student,
-    AlertType,
-    Alert,
-    Hobby,
-    Guardian,
-    StudentGuardianRelation,
-    StudentGuardianAssoc
+    Title, IDCardType, IDCard, Gender, Religion, BloodGroup, Student,
+    AlertType, AlertStatus, StudentAlert, Hobby, StudentHobby,
+    Guardian, Relation, StudentGuardian, QuoteArtifact, 
+    QuoteSource, StudentFavoriteQuote, PreviousEducation
 )
+# from .models import
 
-# Register your models here.
+@admin.register(IDCardType)
+class IDCardTypeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
 
-@admin.register(Status)
-class StatusAdmin(admin.ModelAdmin):
-    list_display = ('status_name', 'description')
-    list_display_links = ('status_name',)
+@admin.register(Title)
+class TitleAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    
+@admin.register(IDCard)
+class IDCardAdmin(admin.ModelAdmin):
+    list_display = ('idcardtype', 'identity_text', 'expiry_date', 'status')
+    search_fields = ('idcardtype', 'identity_text')
+    list_filter = ('status',)
 
 @admin.register(Gender)
 class GenderAdmin(admin.ModelAdmin):
-    list_display = ('gender_name', 'created_at')
+    list_display = ('gender_name',)
 
 @admin.register(Religion)
 class ReligionAdmin(admin.ModelAdmin):
-    list_display = ('religion_name', 'created_at')
+    list_display = ('religion_name',)
 
 @admin.register(BloodGroup)
 class BloodGroupAdmin(admin.ModelAdmin):
-    list_display = ('blood_type', 'description')
+    list_display = ('blood_type',)
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('student_id', 'first_name', 'other_name', 'last_name', 'gender', 'birth_date', 'getage', 'residence_address')
-    list_filter = ('gender',)
-    search_fields = ('first_name', 'last_name', 'student_id')
+    list_display = ('student_id', 'first_name', 'other_name', 'surname', 'gender', 'birth_date', 'residence_address', 'phone_number', 'email_address', 'religion', 'country')
+    search_fields = ('student', 'first_name')
+    list_filter = ('branch', )
 
 @admin.register(AlertType)
 class AlertTypeAdmin(admin.ModelAdmin):
-    list_display = ('alerttype_name', 'description')
+    list_display = ('alerttype_name',)
 
-@admin.register(Alert)
-class AlertAdmin(admin.ModelAdmin):
-    list_display = ('student', 'alert_type', 'description', 'alert_status', 'created_at', 'comment')
+@admin.register(AlertStatus)
+class AlertStatusAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+@admin.register(StudentAlert)
+class StudentAlertAdmin(admin.ModelAdmin):
+    list_display = ('student', 'alert_type', 'alert_status', 'description')
+    search_fields = ('student', )
     list_filter = ('alert_type', 'alert_status')
-    search_fields = ('student',)
 
 @admin.register(Hobby)
 class HobbyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
+    list_display = ('name',)
+
+@admin.register(StudentHobby)
+class StudentHobbyAdmin(admin.ModelAdmin):
+    list_display = ('student', 'hobby')
+    search_fields = ('student',)
 
 @admin.register(Guardian)
 class GuardianAdmin(admin.ModelAdmin):
-    list_display = ('guardian_id', 'name', 'gender', 'residence_address', 'phone_number', 'occupation', 'email_address')
-    search_fields = ('guardian_id', 'name', 'phone_number')
+    list_display = ('guardian_id', 'title', 'name', 'residence_address', 'occupation', 'email_address', 'phone_number')
+    search_fields = ('guardian_id', 'name')
 
-@admin.register(StudentGuardianRelation)
-class StudentGuardianRelationAdmin(admin.ModelAdmin):
-    list_display = ('relationship_type', 'description')
+@admin.register(Relation)
+class RelationAdmin(admin.ModelAdmin):
+    list_display = ('relationship_type', )
 
-@admin.register(StudentGuardianAssoc)
-class StudentGuardianAssocAdmin(admin.ModelAdmin):
-    list_display = ('student', 'guardian', 'relation', 'created_at', 'description')
-    search_fields = ('student', 'guardian')
-    list_filter = ('relation',)
+@admin.register(StudentGuardian)
+class StudentGuardianAdmin(admin.ModelAdmin):
+    list_display = ('student', 'guardian', 'relation')
+    search_fields = ('student', )
+
+@admin.register(QuoteSource)
+class QuoteSourceAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+
+@admin.register(QuoteArtifact)
+class QuoteArtifactAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+
+@admin.register(StudentFavoriteQuote)
+class StudentFavoriteQuoteAdmin(admin.ModelAdmin):
+    list_display = ('student', 'artifact', 'source', 'quote')
+    search_fields = ('student', )
+    list_filter = ('artifact',)
+
+
+@admin.register(PreviousEducation)
+class PreviousEducationAdmin(admin.ModelAdmin):
+    list_display = ('student', 'school_name', 'address')
+    search_fields = ('student', 'school_name')
