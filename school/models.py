@@ -112,7 +112,7 @@ class Branch(models.Model):
     description = models.TextField("Description", blank=True, null=True)
     created_at = models.DateTimeField("Created At", auto_now_add=True)
     status = models.ForeignKey(ValidityStatus, verbose_name="Status", on_delete=models.SET_NULL, null=True)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Created By", on_delete=models.CASCADE)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Created By", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         db_table = "branch"
