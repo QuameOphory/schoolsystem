@@ -251,7 +251,7 @@ class StudentHobby(models.Model):
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Created By", on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return self.hobby 
+        return self.hobby.name
 
     class Meta:
         db_table = 'studenthobby'
