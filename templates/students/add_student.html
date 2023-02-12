@@ -1,0 +1,338 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title  %}
+    <title>Add Student</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Add Students</h3>
+                    <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'list' %}">Students</a></li>
+                    <li class="breadcrumb-item active">Add Students</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{student_formset.management_form}}
+                        {% for form in student_formset %}
+                          
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Student Information</span></h5>
+                            </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                    {{form.first_name.errors}}
+                                    {{form.first_name.label}}
+                                    {{form.first_name}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                    {{form.other_name.errors}}
+                                    {{form.other_name.label}}
+                                    {{form.other_name}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.surname.errors}}
+                                        {{form.surname.label}}
+                                        {{form.surname}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.gender.errors}}
+                                        {{form.gender.label}}
+                                        {{form.gender}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.birth_date.errors}}
+                                        {{form.birth_date.label}}
+                                        {{form.birth_date}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.phone_number.errors}}
+                                        {{form.phone_number.label}}
+                                        {{form.phone_number}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.email_address.errors}}
+                                        {{form.email_address.label}}
+                                        {{form.email_address}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.religion.errors}}
+                                        {{form.religion.label}}
+                                        {{form.religion}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.country.errors}}
+                                        {{form.country.label}}
+                                        {{form.country}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.height.errors}}
+                                        {{form.height.label}}
+                                        {{form.height}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.weight.errors}}
+                                        {{form.weight.label}}
+                                        {{form.weight}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.blood_group.errors}}
+                                        {{form.blood_group.label}}
+                                        {{form.blood_group}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <div class="form-group">
+                                        {{form.photo.errors}}
+                                        {{form.photo.label}}
+                                        {{form.photo}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        {{form.description.errors}}
+                                        {{form.description.label}}
+                                        {{form.description}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        {{form.residence_address.errors}}
+                                        {{form.residence_address.label}}
+                                        {{form.residence_address}}
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                                {{student_alert_formset.management_form}}
+                                {% for form in student_alert_formset %}
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Alert Information</span></h5>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            {{form.alert_type.errors}}
+                                            {{form.alert_type.label}}
+                                            {{form.alert_type}}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            {{form.alert_status.errors}}
+                                            {{form.alert_status.label}}
+                                            {{form.alert_status}}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <div class="form-group">
+                                            {{form.alert_attachment1.errors}}
+                                            {{form.alert_attachment1.label}}
+                                            {{form.alert_attachment1}}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <div class="form-group">
+                                            {{form.description.errors}}
+                                            {{form.description.label}}
+                                            {{form.description}}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                {{student_hobby_formset.management_form}}
+                                {% for form in student_hobby_formset %}
+                                    <div class="col-12 col-sm-12">
+                                        <div class="form-group">
+                                            {{form.hobby.errors}}
+                                            {{form.hobby.label}}
+                                            {{form.hobby}}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                {{previous_education_formset.management_form}}
+                                {% for form in previous_education_formset %}
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Previous Education</span></h5>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group">
+                                            {{form.school_name.errors}}
+                                            {{form.school_name.label}}
+                                            {{form.school_name}}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group">
+                                            {{form.address.errors}}
+                                            {{form.address.label}}
+                                            {{form.address}}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group">
+                                            {{form.location.errors}}
+                                            {{form.location.label}}
+                                            {{form.location}}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                {{guardian_formset.management_form}}
+                                {% for form in guardian_formset %}
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Guardian Information</span></h5>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.guardian_id.errors}}
+                                        {{form.guardian_id.label}}
+                                        {{form.guardian_id}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.title.errors}}
+                                        {{form.title.label}}
+                                        {{form.title}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.name.errors}}
+                                        {{form.name.label}}
+                                        {{form.name}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.occupation.errors}}
+                                        {{form.occupation.label}}
+                                        {{form.occupation}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.email_address.errors}}
+                                        {{form.email_address.label}}
+                                        {{form.email_address}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.phone_number.errors}}
+                                        {{form.phone_number.label}}
+                                        {{form.phone_number}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.photo.errors}}
+                                        {{form.photo.label}}
+                                        {{form.photo}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.phone_number2.errors}}
+                                        {{form.phone_number2.label}}
+                                        {{form.phone_number2}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group">
+                                        {{form.phone_number3.errors}}
+                                        {{form.phone_number3.label}}
+                                        {{form.phone_number3}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <div class="form-group">
+                                        {{form.residence_address.errors}}
+                                        {{form.residence_address.label}}
+                                        {{form.residence_address}}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {{student_guardian_formset.management_form}}
+                                {% for form in student_guardian_formset %}
+                                <div class="col-12 col-sm-12">
+                                    <div class="form-group">
+                                        {{form.relation.errors}}
+                                        {{form.relation.label}}
+                                        {{form.relation}}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {{favorite_quote_formset.management_form}}
+                                {% for form in favorite_quote_formset %}
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Favorite Quote</span></h5>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        {{form.artifact.errors}}
+                                        {{form.artifact.label}}
+                                        {{form.artifact}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        {{form.source.errors}}
+                                        {{form.source.label}}
+                                        {{form.source}}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <div class="form-group">
+                                        {{form.quote.errors}}
+                                        {{form.quote.label}}
+                                        {{form.quote}}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                        </div>
+                        
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock content %}
